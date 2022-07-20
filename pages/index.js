@@ -21,9 +21,9 @@ export default function Home({ githubProfileData }) {
 				data={{
 					title: "Naveen Gali",
 					description:
-						"A passionate Full Stack Web Developer and Blockchain Developer.",
+						"A passionate Web and Android Application Developer.",
 					image: "https://avatars.githubusercontent.com/u/68782156?s=400&u=9cbcae643ec4e61914207b71ac2b8c26b4d31fbf",
-					url: "https://developer-portfolio-1hanzla100.vercel.app",
+					url: "https://naveengali11.github.io/",
 					keywords: [
 						"Naveen",
 						"Naveen Gali",
