@@ -22,7 +22,7 @@ export default function Home({ githubProfileData }) {
 					title: "Naveen Gali",
 					description:
 						"A passionate Web and Android Application Developer.",
-					image: "/img/icons/common/ogImage",
+					image: "https://naveengali11.github.io/img/icons/common/ogImage.png",
 					url: "https://naveengali11.github.io/",
 					keywords: [
 						"Naveen",
