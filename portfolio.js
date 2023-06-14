@@ -6,7 +6,7 @@ export const greetings = {
 	description:
 		"I'm passionate Web and Mobile Application developer having an experience of web applications with React.js, Next.js and Building Hybrid Mobile Applications using React Native Framework.",
 	resumeLink:
-		"https://drive.google.com/file/d/1ooV-s5J6x0XHZWfLwuF_auZZG69zuVQL/view?usp=sharing"
+		"https://drive.google.com/file/d/1Cq_6dDz0CdDalfGvj9Oeet8AqGVUCgSW/view?usp=sharing"
 };
 
 export const openSource = {
