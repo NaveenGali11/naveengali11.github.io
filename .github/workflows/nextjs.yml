@@ -74,12 +74,17 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
+        # Environment variables needed for the build command
         env:
-          NEXT_PUBLIC_GA_ID:${{NEXT_PUBLIC_GA_ID}}
+          # Correctly reference the secret using the 'secrets.' prefix
+          NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
+          # Add any other environment variables/secrets needed for the build here
+          # ANOTHER_VAR: ${{ secrets.ANOTHER_SECRET_NAME }}
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # Upload the output directory from the Next.js build
           path: ./out
 
   # Deployment job
@@ -88,6 +93,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    # This job depends on the build job completing successfully
     needs: build
     steps:
       - name: Deploy to GitHub Pages
