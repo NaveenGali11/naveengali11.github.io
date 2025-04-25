@@ -2,21 +2,23 @@
 import Script from "next/script";
 
 export default function GoogleAnalytics() {
-    const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
     return (
         <>
             <Script
-                src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-                strategy="afterInteractive"
+                strategy='lazyOnload'
+                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
             />
-            <Script id="google-analytics" strategy="afterInteractive">
+
+            <Script id='' strategy='lazyOnload'>
                 {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', ${gaId});
-        `}
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+              page_path: window.location.pathname,
+              });
+          `}
             </Script>
         </>
     );
