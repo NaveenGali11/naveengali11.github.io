@@ -60,6 +60,9 @@ export const EducationSection = () => {
                                     {edu.degree}
                                 </p>
                                 <p className="text-sm text-gray-400">
+                                    {edu.location}
+                                </p>
+                                <p className="text-sm text-gray-400">
                                     {edu.duration}
                                 </p>
                                 <p className="text-sm text-gray-400">
