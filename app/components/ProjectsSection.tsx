@@ -13,6 +13,24 @@ export const ProjectsSection = () => {
         <div className="space-y-8 sm:space-y-12">
           {[
             {
+              title: "Momentum: Mobile Design System & Prototype",
+              description:
+                "A comprehensive mobile design system built from scratch in Figma, used to create a high-fidelity, interactive application prototype.",
+              metrics: {
+                reusability: 100,
+                consistency: 100,
+                usability: 95,
+              },
+              techDetails: [
+                "End-to-End UI/UX Design in Figma",
+                "Design System Architecture",
+                "Component-Based Design (10+ Components)",
+                "Advanced Prototyping & Animations",
+                "Variant & Component Properties",
+              ],
+              image: "/design_system.png",
+            },
+            {
               title: "Smart Homes E-Commerce Application",
               description:
                 "FullStack Smart Home Appliances E-Commerce application with OpenAi integration for customer support.",
