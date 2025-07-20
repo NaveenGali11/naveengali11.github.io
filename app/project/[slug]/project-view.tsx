@@ -13,6 +13,7 @@ const CheckIcon = () => (
     </svg>
 );
 
+// This is the Client Component. It handles state and UI.
 export default function ProjectView({project}: { project: Project }) {
     const [activeTab, setActiveTab] = useState("screens");
 
@@ -112,7 +113,6 @@ export default function ProjectView({project}: { project: Project }) {
                             )}
                         </nav>
                     </div>
-                    {/* Tab Content */}
                     {activeTab === 'screens' && (
                         <div className="space-y-16 animate-fade-in">
                             {project.screenGallery?.map((item, index) => (
