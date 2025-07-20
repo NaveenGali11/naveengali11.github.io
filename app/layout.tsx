@@ -1,17 +1,13 @@
 import type {Metadata} from "next";
-import {Geist, Geist_Mono} from "next/font/google";
+import {Inter} from "next/font/google"; // Import the Inter font
 import "./globals.css";
 import GoogleAnalytics from "./analytics/google-analytics";
 import HotjarAnalytics from "@/app/analytics/hotjar-analytics";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
+// Initialize the Inter font
+const inter = Inter({
     subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
+    variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -87,7 +83,7 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+            className={`${inter.variable} antialiased`} // Use the Inter font variable
         >
         <HotjarAnalytics/>
         <GoogleAnalytics/>
