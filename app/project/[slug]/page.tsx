@@ -3,18 +3,13 @@ import Link from "next/link";
 import {notFound} from "next/navigation";
 import ProjectView from "./project-view";
 
-type PageProps = {
-    params: { slug: string };
-    searchParams?: { [key: string]: string | string[] | undefined };
-};
-
 export async function generateStaticParams() {
     return projects.map((project) => ({
         slug: project.slug,
     }));
 }
 
-export default function ProjectPage({params}: PageProps) {
+export default function ProjectPage({params}: { params: { slug: string } }) {
     const project = projects.find((project) => project.slug === params.slug);
 
     if (!project) {
