@@ -50,15 +50,10 @@ export const HeroSection = () => {
             }
 
             draw() {
-                // @ts-ignore
                 ctx.fillStyle = this.color;
-                // @ts-ignore
                 ctx.beginPath();
-                // @ts-ignore
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                // @ts-ignore
                 ctx.closePath();
-                // @ts-ignore
                 ctx.fill();
             }
 
@@ -71,20 +66,21 @@ export const HeroSection = () => {
                 const maxDistance = 200;
                 const force = (maxDistance - distance) / maxDistance;
 
-                let directionX = (forceDirectionX * force * this.density);
-                let directionY = (forceDirectionY * force * this.density);
+                // Changed from 'let' to 'const'
+                const directionX = (forceDirectionX * force * this.density);
+                const directionY = (forceDirectionY * force * this.density);
 
                 if (distance < 200) {
                     this.x -= directionX;
                     this.y -= directionY;
                 } else {
                     if (this.x !== this.baseX) {
-                        const dx = this.x - this.baseX;
-                        this.x -= dx / 10;
+                        const returnDx = this.x - this.baseX;
+                        this.x -= returnDx / 10;
                     }
                     if (this.y !== this.baseY) {
-                        const dy = this.y - this.baseY;
-                        this.y -= dy / 10;
+                        const returnDy = this.y - this.baseY;
+                        this.y -= returnDy / 10;
                     }
                 }
                 this.draw();

@@ -9,7 +9,7 @@ export const PhilosophySection = () => {
                         <p className="text-gray-400">
                             I believe the best products are born from a deep understanding of the user. My process
                             always starts with empathy, aiming to solve real-world problems with intuitive, elegant, and
-                            accessible designs. Every component, screen, and interaction is crafted with the user's
+                            accessible designs. Every component, screen, and interaction is crafted with the user&apos;s
                             journey in mind.
                         </p>
                     </div>
