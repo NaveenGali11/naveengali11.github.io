@@ -3,14 +3,12 @@ import Link from "next/link";
 import {notFound} from "next/navigation";
 import ProjectView from "./project-view";
 
-// This server function tells Next.js which pages to build
 export async function generateStaticParams() {
     return projects.map((project) => ({
         slug: project.slug,
     }));
 }
 
-// This is a Server Component. Its only job is to get data.
 export default function ProjectPage({params}: { params: { slug: string } }) {
     const project = projects.find((project) => project.slug === params.slug);
 
@@ -27,7 +25,6 @@ export default function ProjectPage({params}: { params: { slug: string } }) {
                 </Link>
             </header>
             <main className="max-w-4xl mx-auto p-4 sm:p-8">
-                {/* It renders the client component with the final data */}
                 <ProjectView project={project}/>
             </main>
         </div>

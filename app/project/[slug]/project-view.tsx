@@ -4,7 +4,6 @@ import {useState} from "react";
 import Image from "next/image";
 import {projects} from "@/app/projects";
 
-// Define the type for the project prop
 type Project = (typeof projects)[0];
 
 const CheckIcon = () => (
@@ -13,29 +12,19 @@ const CheckIcon = () => (
     </svg>
 );
 
-// This is the Client Component. It handles state and UI.
 export default function ProjectView({project}: { project: Project }) {
     const [activeTab, setActiveTab] = useState("screens");
 
-    const tabClass = (tabName: string) =>
-        `px-6 py-3 font-semibold rounded-t-lg transition-colors duration-300 focus:outline-none ${
-            activeTab === tabName
-                ? 'border-b-2 border-blue-500 text-white'
-                : 'text-gray-400 hover:text-white hover:border-b-2 hover:border-gray-600'
-        }`;
-
+    const tabClass = (tabName: string) => `px-6 py-3 font-semibold rounded-t-lg transition-colors duration-300 focus:outline-none ${activeTab === tabName ? 'border-b-2 border-blue-500 text-white' : 'text-gray-400 hover:text-white hover:border-b-2 hover:border-gray-600'}`;
     const hasVisuals = (project.screenGallery && project.screenGallery.length > 0) || (project.componentGallery && project.componentGallery.length > 0);
 
     return (
         <>
-            {/* --- Project Header --- */}
             <h1 className="text-4xl sm:text-6xl font-bold mb-4">{project.title}</h1>
             <p className="text-lg text-gray-400 mb-8">{project.description}</p>
             <div className="relative h-64 sm:h-[450px] rounded-lg overflow-hidden mb-12 shadow-2xl">
                 <Image src={project.image} alt={project.title} fill className="object-cover"/>
             </div>
-
-            {/* --- Impact & Tech Stack --- */}
             <div className="mb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center">Impact & Tech Stack</h2>
                 <div
@@ -70,16 +59,12 @@ export default function ProjectView({project}: { project: Project }) {
                     </a>
                 </div>
             </div>
-
-            {/* --- The Goal --- */}
             {project.projectGoal && (
                 <div className="my-16 p-8 bg-[#161B22] border border-gray-800 rounded-lg">
                     <h2 className="text-3xl font-bold mb-4 text-center">Project Goal</h2>
                     <p className="text-lg text-gray-300 max-w-3xl mx-auto text-center">{project.projectGoal}</p>
                 </div>
             )}
-
-            {/* --- The Process --- */}
             {project.designProcess && project.designProcess.length > 0 && (
                 <div className="my-16">
                     <h2 className="text-3xl font-bold mb-8 text-center">My Process</h2>
@@ -94,22 +79,17 @@ export default function ProjectView({project}: { project: Project }) {
                     </div>
                 </div>
             )}
-
-            {/* --- Tabbed Interface for Visual Showcase --- */}
             {hasVisuals && (
                 <div className="my-16">
                     <div className="border-b border-gray-800 mb-8">
                         <nav className="-mb-px flex justify-center gap-4" aria-label="Tabs">
                             {project.screenGallery && project.screenGallery.length > 0 && (
-                                <button onClick={() => setActiveTab("screens")} className={tabClass("screens")}>
-                                    Screen Design
-                                </button>
+                                <button onClick={() => setActiveTab("screens")} className={tabClass("screens")}>Screen
+                                    Design</button>
                             )}
                             {project.componentGallery && project.componentGallery.length > 0 && (
                                 <button onClick={() => setActiveTab("components")}
-                                        className={tabClass("components")}>
-                                    Component Showcase
-                                </button>
+                                        className={tabClass("components")}>Component Showcase</button>
                             )}
                         </nav>
                     </div>
@@ -118,8 +98,7 @@ export default function ProjectView({project}: { project: Project }) {
                             {project.screenGallery?.map((item, index) => (
                                 <div key={index} className="space-y-4 text-center">
                                     <div className="relative h-96 rounded-lg bg-[#161B22] p-4 border border-gray-800">
-                                        <Image src={item.imageUrl} alt={item.title} fill
-                                               className="object-contain"/>
+                                        <Image src={item.imageUrl} alt={item.title} fill className="object-contain"/>
                                     </div>
                                     <div className="max-w-2xl mx-auto pt-4">
                                         <h3 className="text-2xl font-bold text-blue-400">{item.title}</h3>
@@ -136,8 +115,7 @@ export default function ProjectView({project}: { project: Project }) {
                                      className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${index % 2 !== 0 ? 'md:grid-flow-col-dense' : ''}`}>
                                     <div
                                         className={`relative h-64 rounded-lg bg-[#161B22] p-4 border border-gray-800 ${index % 2 !== 0 ? 'md:col-start-2' : ''}`}>
-                                        <Image src={item.imageUrl} alt={item.title} fill
-                                               className="object-contain"/>
+                                        <Image src={item.imageUrl} alt={item.title} fill className="object-contain"/>
                                     </div>
                                     <div className="space-y-3">
                                         <h3 className="text-2xl font-bold text-blue-400">{item.title}</h3>
