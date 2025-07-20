@@ -9,6 +9,13 @@ import Image from "next/image";
 // Define the type for the project object
 // type _Project = (typeof projects)[0];
 
+export async function generateStaticParams() {
+    return projects.map((project) => ({
+        slug: project.slug,
+    }));
+}
+
+
 const CheckIcon = () => (
     <svg className="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/>
