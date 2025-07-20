@@ -3,13 +3,20 @@ import Link from "next/link";
 import {notFound} from "next/navigation";
 import ProjectView from "./project-view";
 
+// Define a type for the component's props
+type ProjectPageProps = {
+    params: {
+        slug: string;
+    };
+};
+
 export async function generateStaticParams() {
     return projects.map((project) => ({
         slug: project.slug,
     }));
 }
 
-export default function ProjectPage({params}: { params: { slug: string } }) {
+export default function ProjectPage({params}: ProjectPageProps) {
     const project = projects.find((project) => project.slug === params.slug);
 
     if (!project) {
