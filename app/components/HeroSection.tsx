@@ -1,145 +1,191 @@
+"use client";
+
+import {useEffect, useRef} from "react";
+import Link from "next/link";
+import {motion} from "framer-motion";
+
 export const HeroSection = () => {
-  return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background Grid */}
-      <div className="absolute inset-0 grid-background opacity-20">
-        <div className="grid-overlay animate-pulse-slow"></div>
-      </div>
+    const canvasRef = useRef<HTMLCanvasElement>(null);
 
-      {/* Floating Tech Icons */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[
-          { icon: "⚛️", delay: "0s", position: "top-20 left-1/4" },
-          { icon: "🚀", delay: "2s", position: "top-40 right-1/3" },
-          { icon: "💻", delay: "1s", position: "bottom-32 left-1/3" },
-          { icon: "🔥", delay: "3s", position: "bottom-20 right-1/4" },
-        ].map((item, index) => (
-          <div
-            key={index}
-            className={`absolute ${item.position} animate-float opacity-50`}
-            style={{ animationDelay: item.delay }}
-          >
-            <span className="text-4xl">{item.icon}</span>
-          </div>
-        ))}
-      </div>
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
 
-      {/* Hero Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4">
-        <div className="text-center space-y-6">
-          {/* Name Section */}
-          <div className="relative inline-block px-4 sm:px-0">
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl blur-xl opacity-75"></div>
-            <h1 className="relative text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 pb-2">
-              Naveen Gali
-            </h1>
-          </div>
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
 
-          {/* Role & Description */}
-          <div className="space-y-4 sm:space-y-6 mt-6 sm:mt-8">
-            <div className="flex flex-col items-center gap-4">
-              <div className="flex items-center gap-3">
-                <span className="h-[1px] w-8 sm:w-12 bg-blue-500"></span>
-                <h2 className="text-xl sm:text-2xl font-light tracking-wide text-blue-400">
-                  React and React Native Developer
-                </h2>
-                <span className="h-[1px] w-8 sm:w-12 bg-blue-500"></span>
-              </div>
-              <p className="text-base sm:text-lg text-gray-400 max-w-2xl px-4 sm:px-0">
-                Crafting exceptional digital experiences with modern web
-                technologies on Web and Mobile
-              </p>
-            </div>
+        let particlesArray: Particle[] = [];
+        const mouse = {x: 0, y: 0};
 
-            {/* Tech Stack Pills */}
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-6 sm:mt-8 px-4 sm:px-0">
-              {["React", "TypeScript", "Node.js", "React Native", "Redux"].map(
-                (tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 sm:px-4 py-1 sm:py-1.5 bg-[#1A1F2B] rounded-full text-sm font-medium text-gray-300 border border-[#2D333B] hover:border-blue-500/50 transition-colors"
-                  >
-                    {tech}
-                  </span>
-                )
-              )}
-            </div>
-          </div>
+        const handleResize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        };
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-8 sm:mt-12 px-4 sm:px-0">
-            <a
-              href="#work"
-              className="group relative inline-flex items-center justify-center"
-            >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur opacity-75 group-hover:opacity-100 transition"></div>
-              <span className="relative px-6 sm:px-8 py-3 bg-[#161B22] rounded-full inline-flex items-center justify-center w-full sm:w-auto">
-                View My Work
-                <svg
-                  className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+        window.addEventListener('resize', handleResize);
+        const mouseMoveHandler = (event: MouseEvent) => {
+            mouse.x = event.clientX;
+            mouse.y = event.clientY;
+        };
+        window.addEventListener('mousemove', mouseMoveHandler);
+
+        class Particle {
+            x: number;
+            y: number;
+            size: number;
+            baseX: number;
+            baseY: number;
+            density: number;
+            color: string;
+
+            constructor(x: number, y: number, size: number, color: string) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.density = (Math.random() * 30) + 1;
+                this.color = color;
+            }
+
+            draw() {
+                // @ts-ignore
+                ctx.fillStyle = this.color;
+                // @ts-ignore
+                ctx.beginPath();
+                // @ts-ignore
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                // @ts-ignore
+                ctx.closePath();
+                // @ts-ignore
+                ctx.fill();
+            }
+
+            update() {
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const forceDirectionX = dx / distance;
+                const forceDirectionY = dy / distance;
+                const maxDistance = 200;
+                const force = (maxDistance - distance) / maxDistance;
+
+                let directionX = (forceDirectionX * force * this.density);
+                let directionY = (forceDirectionY * force * this.density);
+
+                if (distance < 200) {
+                    this.x -= directionX;
+                    this.y -= directionY;
+                } else {
+                    if (this.x !== this.baseX) {
+                        const dx = this.x - this.baseX;
+                        this.x -= dx / 10;
+                    }
+                    if (this.y !== this.baseY) {
+                        const dy = this.y - this.baseY;
+                        this.y -= dy / 10;
+                    }
+                }
+                this.draw();
+            }
+        }
+
+        const init = () => {
+            particlesArray = [];
+            for (let i = 0; i < 200; i++) {
+                const size = Math.random() * 2 + 1;
+                const x = Math.random() * (canvas.width - size * 2) + size;
+                const y = Math.random() * (canvas.height - size * 2) + size;
+                particlesArray.push(new Particle(x, y, size, `hsl(${Math.random() * 360}, 50%, 50%)`));
+            }
+        };
+
+        let animationFrameId: number;
+        const animate = () => {
+            animationFrameId = requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+        };
+
+        handleResize();
+        animate();
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('mousemove', mouseMoveHandler);
+            cancelAnimationFrame(animationFrameId);
+        };
+    }, []);
+
+    const name = "Naveen Gali";
+
+    const containerVariants = {
+        hidden: {opacity: 0},
+        visible: {
+            opacity: 1,
+            transition: {staggerChildren: 0.1, delayChildren: 0.2},
+        },
+    };
+
+    const letterVariants = {
+        hidden: {opacity: 0, y: 20},
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {type: "spring", damping: 12, stiffness: 200},
+        },
+    };
+
+    return (
+        <div className="relative min-h-screen bg-black">
+            <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full z-0"></canvas>
+
+            <div className="relative z-10 flex min-h-screen flex-col items-center justify-center text-center px-4">
+                <motion.h1
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="flex text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight text-slate-100"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </svg>
-              </span>
-            </a>
-            <a
-              href="#contact"
-              className="px-6 sm:px-8 py-3 bg-[#21262D] rounded-full hover:bg-[#2D333B] transition-colors border border-[#2D333B] hover:border-gray-600 text-center"
-            >
-              Get in Touch
-            </a>
-          </div>
+                    {name.split("").map((letter, index) => (
+                        <motion.span key={index} variants={letterVariants}>
+                            {letter === " " ? "\u00A0" : letter}
+                        </motion.span>
+                    ))}
+                </motion.h1>
 
-          {/* Social Links */}
-          <div className="flex justify-center gap-4 sm:gap-6 mt-8 sm:mt-12">
-            {[
-              { name: "GitHub", icon: "🐙", href: "#" },
-              { name: "LinkedIn", icon: "💼", href: "#" },
-              { name: "Twitter", icon: "🐦", href: "#" },
-              { name: "Blog", icon: "✍️", href: "#" },
-            ].map((social) => (
-              <a
-                key={social.name}
-                href={social.href}
-                className="group relative p-2 sm:p-3 hover:text-blue-400 transition-colors"
-                aria-label={social.name}
-              >
-                <span className="text-xl sm:text-2xl group-hover:scale-110 transition-transform inline-block">
-                  {social.icon}
-                </span>
-              </a>
-            ))}
-          </div>
+                <motion.p
+                    initial={{opacity: 0, y: 30}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{type: "spring", stiffness: 50, duration: 1.5, delay: 1.5}}
+                    className="mt-6 text-xl sm:text-2xl text-slate-300 max-w-2xl"
+                >
+                    I design and build exceptional digital experiences.
+                </motion.p>
+
+                <motion.div
+                    initial={{opacity: 0, y: 30}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{type: "spring", stiffness: 50, duration: 1.5, delay: 1.7}}
+                    className="flex flex-col sm:flex-row justify-center gap-4 mt-10"
+                >
+                    <Link
+                        href="#work"
+                        className="group relative inline-flex items-center justify-center px-8 py-3 bg-slate-100 text-black rounded-full text-lg font-semibold transition-transform hover:scale-105"
+                    >
+                        View My Work
+                    </Link>
+                    <Link
+                        href="/project/aura-fashion-app"
+                        className="group relative inline-flex items-center justify-center px-8 py-3 bg-transparent border-2 border-slate-400 rounded-full text-lg font-semibold transition-colors hover:bg-slate-100 hover:text-black"
+                    >
+                        Explore a Case Study
+                    </Link>
+                </motion.div>
+            </div>
         </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 inset-x-0 flex flex-col items-center animate-bounce">
-        <span className="text-gray-400 text-sm mb-2 text-center">
-          Scroll to explore
-        </span>
-        <svg
-          className="w-6 h-6 text-gray-400"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
-        </svg>
-      </div>
-    </div>
-  );
+    );
 };
