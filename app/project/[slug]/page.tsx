@@ -3,7 +3,14 @@ import Link from "next/link";
 import {notFound} from "next/navigation";
 import ProjectView from "./project-view";
 
-export default function ProjectPage({params}: { params: { slug: string } }) {
+// Define the expected props shape
+interface ProjectPageProps {
+    params: {
+        slug: string;
+    };
+}
+
+export default function ProjectPage({params}: ProjectPageProps) {
     const project = projects.find((project) => project.slug === params.slug);
 
     if (!project) {
@@ -18,7 +25,6 @@ export default function ProjectPage({params}: { params: { slug: string } }) {
                     &larr; Back to Projects
                 </Link>
             </header>
-
             <main className="max-w-4xl mx-auto p-4 sm:p-8">
                 <ProjectView project={project}/>
             </main>
