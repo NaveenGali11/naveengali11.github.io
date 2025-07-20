@@ -1,7 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import {useState} from "react";
+import Image from "next/image";
+import {projects} from "@/app/projects";
+
+// Define the type for the project prop
+type Project = (typeof projects)[0];
 
 const CheckIcon = () => (
     <svg className="w-6 h-6 text-green-400" fill="none" viewBox="0 0 24" stroke="currentColor">
@@ -9,38 +13,8 @@ const CheckIcon = () => (
     </svg>
 );
 
-// Carousel Arrow SVG
-const ArrowIcon = ({direction = 'left'}: { direction?: 'left' | 'right' }) => (
-    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-              d={direction === 'left' ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"}/>
-    </svg>
-);
-
-
-type Project = {
-    title: string;
-    description: string;
-    image: string;
-    projectGoal?: string;
-    designProcess?: string[];
-    screenGallery?: { title: string; imageUrl: string; description: string }[];
-    componentGallery?: { title: string; imageUrl: string; description: string; designRationale: string }[];
-    metrics: {
-        reusability?: number;
-        consistency?: number;
-        usability?: number;
-        performance?: number;
-        accessibility?: number;
-        seo?: number;
-    };
-    techDetails: string[];
-    link: string;
-};
-
 export default function ProjectView({project}: { project: Project }) {
     const [activeTab, setActiveTab] = useState("screens");
-    const [currentScreen, setCurrentScreen] = useState(0);
 
     const tabClass = (tabName: string) =>
         `px-6 py-3 font-semibold rounded-t-lg transition-colors duration-300 focus:outline-none ${
@@ -50,10 +24,6 @@ export default function ProjectView({project}: { project: Project }) {
         }`;
 
     const hasVisuals = (project.screenGallery && project.screenGallery.length > 0) || (project.componentGallery && project.componentGallery.length > 0);
-
-    const totalScreens = project.screenGallery?.length || 0;
-    const handlePrev = () => setCurrentScreen(current => (current === 0 ? totalScreens - 1 : current - 1));
-    const handleNext = () => setCurrentScreen(current => (current === totalScreens - 1 ? 0 : current + 1));
 
     return (
         <>
@@ -123,6 +93,7 @@ export default function ProjectView({project}: { project: Project }) {
                     </div>
                 </div>
             )}
+
             {/* --- Tabbed Interface for Visual Showcase --- */}
             {hasVisuals && (
                 <div className="my-16">
@@ -134,47 +105,30 @@ export default function ProjectView({project}: { project: Project }) {
                                 </button>
                             )}
                             {project.componentGallery && project.componentGallery.length > 0 && (
-                                <button onClick={() => setActiveTab("components")} className={tabClass("components")}>
+                                <button onClick={() => setActiveTab("components")}
+                                        className={tabClass("components")}>
                                     Component Showcase
                                 </button>
                             )}
                         </nav>
                     </div>
-
-                    {/* Screens Tab Content - NEW CAROUSEL LAYOUT */}
-                    {activeTab === 'screens' && project.screenGallery && project.screenGallery.length > 0 && (
-                        <div className="animate-fade-in">
-                            <div className="carousel-container bg-[#161B22] p-4 border border-gray-800 rounded-lg">
-                                <div className="carousel-track"
-                                     style={{transform: `translateX(-${currentScreen * 100}%)`}}>
-                                    {project.screenGallery.map((item, index) => (
-                                        <div key={index} className="carousel-slide relative h-96">
-                                            <Image src={item.imageUrl} alt={item.title} fill
-                                                   className="object-contain"/>
-                                        </div>
-                                    ))}
+                    {/* Tab Content */}
+                    {activeTab === 'screens' && (
+                        <div className="space-y-16 animate-fade-in">
+                            {project.screenGallery?.map((item, index) => (
+                                <div key={index} className="space-y-4 text-center">
+                                    <div className="relative h-96 rounded-lg bg-[#161B22] p-4 border border-gray-800">
+                                        <Image src={item.imageUrl} alt={item.title} fill
+                                               className="object-contain"/>
+                                    </div>
+                                    <div className="max-w-2xl mx-auto pt-4">
+                                        <h3 className="text-2xl font-bold text-blue-400">{item.title}</h3>
+                                        <p className="text-gray-300">{item.description}</p>
+                                    </div>
                                 </div>
-                                {totalScreens > 1 && (
-                                    <>
-                                        <button onClick={handlePrev}
-                                                className="absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/80 transition-colors">
-                                            <ArrowIcon direction="left"/>
-                                        </button>
-                                        <button onClick={handleNext}
-                                                className="absolute top-1/2 right-2 -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/80 transition-colors">
-                                            <ArrowIcon direction="right"/>
-                                        </button>
-                                    </>
-                                )}
-                            </div>
-                            <div className="max-w-2xl mx-auto pt-6 text-center">
-                                <h3 className="text-2xl font-bold text-blue-400">{project.screenGallery[currentScreen].title}</h3>
-                                <p className="text-gray-300 mt-2">{project.screenGallery[currentScreen].description}</p>
-                            </div>
+                            ))}
                         </div>
                     )}
-
-                    {/* Components Tab Content */}
                     {activeTab === 'components' && (
                         <div className="space-y-16 animate-fade-in">
                             {project.componentGallery?.map((item, index) => (
@@ -182,7 +136,8 @@ export default function ProjectView({project}: { project: Project }) {
                                      className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${index % 2 !== 0 ? 'md:grid-flow-col-dense' : ''}`}>
                                     <div
                                         className={`relative h-64 rounded-lg bg-[#161B22] p-4 border border-gray-800 ${index % 2 !== 0 ? 'md:col-start-2' : ''}`}>
-                                        <Image src={item.imageUrl} alt={item.title} fill className="object-contain"/>
+                                        <Image src={item.imageUrl} alt={item.title} fill
+                                               className="object-contain"/>
                                     </div>
                                     <div className="space-y-3">
                                         <h3 className="text-2xl font-bold text-blue-400">{item.title}</h3>
