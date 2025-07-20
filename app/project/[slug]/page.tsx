@@ -1,7 +1,7 @@
 import {projects} from "@/app/projects";
 import Link from "next/link";
 import {notFound} from "next/navigation";
-import ProjectView from "./project-view"; // We'll create this next
+import ProjectView from "./project-view";
 
 // This function tells Next.js which pages to build on the server
 export async function generateStaticParams() {
@@ -10,14 +10,7 @@ export async function generateStaticParams() {
     }));
 }
 
-// Define the expected props shape for the server component
-interface ProjectPageProps {
-    params: {
-        slug: string;
-    };
-}
-
-export default function ProjectPage({params}: ProjectPageProps) {
+export default function ProjectPage({params}: { params: { slug: string } }) {
     const project = projects.find((project) => project.slug === params.slug);
 
     if (!project) {
@@ -33,7 +26,6 @@ export default function ProjectPage({params}: ProjectPageProps) {
                 </Link>
             </header>
             <main className="max-w-4xl mx-auto p-4 sm:p-8">
-                {/* Pass the final project data to the client component */}
                 <ProjectView project={project}/>
             </main>
         </div>
