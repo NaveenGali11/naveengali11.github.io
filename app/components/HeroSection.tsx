@@ -169,7 +169,8 @@ export const HeroSection = () => {
                     transition={{type: "spring", stiffness: 50, duration: 1.5, delay: 1.5}}
                     className="mt-6 text-xl sm:text-2xl text-slate-300 max-w-2xl"
                 >
-                    I design and build exceptional digital experiences.
+                    A UI/UX designer and React developer, passionate about creating seamless and engaging digital
+                    products.
                 </motion.p>
 
                 <motion.div

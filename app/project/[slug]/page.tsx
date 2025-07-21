@@ -1,4 +1,4 @@
-import {projects} from "@/app/projects";
+import {Project, projects} from "@/app/projects";
 import Link from "next/link";
 import {notFound} from "next/navigation";
 import ProjectView from "./project-view";
@@ -10,7 +10,12 @@ export async function generateStaticParams() {
 }
 
 export default function ProjectPage({params}: { params: { slug: string } }) {
-    const project = projects.find((project) => project.slug === params.slug);
+    // const project = projects.find(
+    //     (p): p is Project => p.slug === params.slug
+    // );
+
+    const project: Project | undefined = projects.find(p => p.slug === params.slug);
+
 
     if (!project) {
         notFound();

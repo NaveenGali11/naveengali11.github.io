@@ -10,8 +10,7 @@ export const ContactSection = () => {
         const formData = new FormData(e.target as HTMLFormElement);
 
         try {
-            // Replace with your own form submission endpoint
-            const response = await fetch("https://formspree.io/f/your_form_id", {
+            const response = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`, {
                 method: "POST",
                 body: formData,
                 headers: {

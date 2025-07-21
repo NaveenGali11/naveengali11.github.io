@@ -76,9 +76,9 @@ jobs:
       - name: Build with Next.js
         # Environment variables needed for the build command
         env:
-          # Correctly reference the secret using the 'secrets.' prefix
           NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
           NEXT_PUBLIC_HOTJAR_ID: ${{ secrets.NEXT_PUBLIC_HOTJAR_ID }}
+          NEXT_PUBLIC_FORMSPREE_ID: ${{secrets.NEXT_PUBLIC_FORMSPREE_ID}}
           # Add any other environment variables/secrets needed for the build here
           # ANOTHER_VAR: ${{ secrets.ANOTHER_SECRET_NAME }}
         run: ${{ steps.detect-package-manager.outputs.runner }} next build

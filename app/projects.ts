@@ -1,6 +1,68 @@
+export type ProjectType = "design" | "dev";
+
+export interface ProjectBase {
+    slug: string;
+    type: ProjectType;
+    title: string;
+    description: string;
+    projectGoal: string;
+    techStack: string[];
+    techDetails: string[];
+    image: string;
+    link: string;
+    linkText: string;
+}
+
+export interface DesignMetrics {
+    reusability: number;
+    consistency: number;
+    usability: number;
+}
+
+export interface DesignScreen {
+    title: string;
+    imageUrl: string;
+    description: string;
+}
+
+export interface DesignComponent {
+    title: string;
+    imageUrl: string;
+    description: string;
+    designRationale: string;
+}
+
+export interface DesignProject extends ProjectBase {
+    type: "design";
+    designProcess: string[];
+    metrics: DesignMetrics;
+    screenGallery: DesignScreen[];
+    componentGallery: DesignComponent[];
+}
+
+export interface DevMetrics {
+    performance: number;
+    accessibility: number;
+    seo: number;
+}
+
+export interface TechStackDetail {
+    name: string;
+    description: string;
+}
+
+export interface DevProject extends ProjectBase {
+    type: "dev";
+    techStackDetails: TechStackDetail[];
+    metrics: DevMetrics;
+}
+
+export type Project = DesignProject | DevProject;
+
 export const projects = [
     {
         slug: "aura-fashion-app",
+        type: "design", // Added type
         title: "Aura: Mobile Fashion App & Design System",
         description:
             "A high-fidelity prototype for 'Aura,' a modern mobile fashion app, designed to provide a seamless and visually engaging shopping experience. The project is built upon a comprehensive, component-based design system created from the ground up in Figma.",
@@ -13,7 +75,6 @@ export const projects = [
             "High-Fidelity Interactive Prototyping",
             "Usability Testing & Iteration"
         ],
-
         metrics: {
             reusability: 95,
             consistency: 100,
@@ -28,7 +89,7 @@ export const projects = [
         ],
         image: "/aura_ecommerce.png",
         link: "https://www.figma.com/design/WQBf7omrPKXxs4mPQy3TGn/E-Commerce?node-id=6-9&t=ezpLlzIhGDmygKin-1",
-
+        linkText: "View Project in Figma", // Added linkText
         screenGallery: [
             {
                 title: "Home Screen",
@@ -52,7 +113,6 @@ export const projects = [
             }
 
         ],
-
         componentGallery: [
             {
                 title: "Header",
@@ -100,10 +160,18 @@ export const projects = [
     },
     {
         slug: "momentum-design-system",
+        type: "design", // Added type
         title: "Momentum: Mobile Design System & Prototype",
-        description:
-            "A comprehensive mobile design system built from scratch in Figma, used to create a high-fidelity, interactive application prototype.",
-        techStack: ["Figma", "Component Design", "Variants", "Auto Layout"],
+        description: "A comprehensive mobile design system built from scratch in Figma, used to create a high-fidelity, interactive application prototype. This project focuses on establishing a scalable and consistent design language for mobile applications.",
+        projectGoal: "The primary goal was to develop a robust and reusable design system that accelerates the design and development process. By creating a library of well-defined components, variants, and styles, Momentum aims to ensure visual consistency and improve usability across all future mobile projects.",
+        techStack: ["Figma", "Component Design", "Variants", "Auto Layout", "Prototyping"],
+        designProcess: [
+            "Foundational Style Definition (Colors, Typography, Spacing)",
+            "Atomic Component Creation (Buttons, Inputs, Icons)",
+            "Composite Component Assembly (Cards, Modals, Navbars)",
+            "Interactive Prototyping and Animation",
+            "Documentation and Style Guide Creation"
+        ],
         metrics: {
             reusability: 100,
             consistency: 100,
@@ -111,55 +179,122 @@ export const projects = [
         },
         techDetails: [
             "End-to-End UI/UX Design in Figma",
-            "Design System Architecture",
-            "Component-Based Design (10+ Components)",
-            "Advanced Prototyping & Animations",
-            "Variant & Component Properties",
+            "Comprehensive Design System Architecture",
+            "Built and documented over 10+ core components",
+            "Advanced prototyping with smart animations and transitions",
+            "Utilized variants and component properties for scalability",
         ],
         image: "/design_system.png",
         link: "https://www.figma.com/design/xItX1Bg0sSv5Iirm0Igi2z/Design-System?m=auto&t=mQK8bZHSxTYs1emo-1",
-        componentGallery: []
+        linkText: "View Project in Figma", // Added linkText
+        screenGallery: [
+            {
+                title: "Home & Detail Screens",
+                imageUrl: "/momentum-screens.jpg",
+                description: "The core screens of the prototype application built using the Momentum design system. The Home screen features a clean, card-based layout for content discovery, while the Detail screen provides a focused view. Both screens utilize the system's navigation and button components for a consistent user flow."
+            }
+        ],
+        componentGallery: [
+            {
+                title: "Core Components Showcase",
+                imageUrl: "/momentum-components.png",
+                description: "A selection of the fundamental components that form the building blocks of the Momentum design system. This includes buttons, input fields, cards, avatars, icons, and navigation elements.",
+                designRationale: "Each component was designed with versatility and reusability in mind, featuring variants and properties that allow them to adapt to different contexts while maintaining a consistent visual identity."
+            }
+        ]
     },
     {
         slug: "smart-homes-ecommerce",
-        title: "Smart Homes E-Commerce Application",
-        description:
-            "FullStack Smart Home Appliances E-Commerce application with OpenAi integration for customer support.",
-        techStack: ["React", "Node.js", "OpenAI", "Docker", "MySQL"],
-        metrics: {
-            performance: 98,
-            accessibility: 100,
-            seo: 100,
-        },
+        type: "dev",
+        title: "Smart Homes: AI-Powered E-Commerce Platform",
+        description: "A full-stack e-commerce platform for smart home products, engineered with a robust backend, dual-database architecture, and advanced AI-powered features.",
+        projectGoal: "To build a feature-rich e-commerce application that goes beyond standard CRUD, integrating modern technologies like AI and advanced search to enhance user engagement and provide intelligent customer support.",
+        techStack: ["React", "Node.js", "MySQL", "MongoDB", "Elasticsearch", "OpenAI", "Docker"],
+        techStackDetails: [
+            {
+                name: "React.js",
+                description: "Built a dynamic and responsive user interface with a component-based architecture for a seamless shopping experience."
+            },
+            {
+                name: "Node.js / Express.js",
+                description: "Developed a robust RESTful API to handle user authentication, product management, and order processing."
+            },
+            {
+                name: "MySQL & MongoDB",
+                description: "Designed a dual-database system, using MySQL for transactional data and MongoDB for flexible storage of user reviews."
+            },
+            {
+                name: "Elasticsearch",
+                description: "Implemented a powerful semantic search engine for products and reviews, providing more intuitive and relevant results."
+            },
+            {
+                name: "OpenAI",
+                description: "Leveraged GPT and embedding models to create intelligent features like automated content generation and smart product recommendations."
+            },
+            {
+                name: "Docker",
+                description: "Containerized all backend services, ensuring a consistent and portable environment for development and deployment."
+            }
+        ],
+        metrics: {performance: 98, accessibility: 100, seo: 100},
         techDetails: [
-            "Full Stack Web Application",
-            "Open Ai Customer Support",
-            "Elastic Search",
-            "MySql and Mongodb Combined Usage",
+            "**AI-Powered Features:** Integrated OpenAI for dynamic product description generation, synthetic review creation, and AI-powered customer support with image analysis.",
+            "**Advanced Semantic Search:** Leveraged Elasticsearch to implement semantic search for products and reviews, enabling more intuitive search results based on meaning.",
+            "**Dual-Database Architecture:** Utilized MySQL for core transactional data and MongoDB for unstructured data like user reviews, optimizing for performance and flexibility.",
+            "**Full-Stack Implementation:** Developed a complete e-commerce workflow, including user authentication with JWT, cart management, and order processing.",
+            "**Data Processing Pipeline:** Created Jupyter Notebooks for data preprocessing, generating AI content, and pushing embeddings to Elasticsearch."
         ],
         image: "/code.jpg",
         link: "https://github.com/NaveenGali11/smart-homes",
-        componentGallery: []
+        linkText: "View on GitHub",
     },
     {
-        slug: "homvery",
-        title: "Homvery",
-        description:
-            "Real World Home Services Application with over 5000+ Users",
-        techStack: ["React Native", "React", "Node.js", "Strapi CMS"],
+        slug: "homvery-home-services",
+        type: "dev",
+        title: "Homvery: Tech-Enabled Home Services in Tier 2 & 3 Cities",
+        description: "A dual mobile and web platform designed to simplify household services through scalable architecture, regional customization, and integrated technician workflows.",
+        projectGoal: "To develop a robust service delivery ecosystem tailored for underserved Indian cities, leveraging modern technologies for real-time coordination, flexible content management, and seamless scalability.",
+        techStack: ["React.js", "Node.js", "Strapi CMS", "DynamoDB", "Firebase", "Microsoft App Center"],
+        techStackDetails: [
+            {
+                name: "React.js",
+                description: "Built intuitive and responsive user interfaces for customer and admin dashboards with dynamic rendering and component reuse."
+            },
+            {
+                name: "Node.js / Express.js",
+                description: "Created scalable APIs for service booking, technician dispatch, user authentication, and feedback management."
+            },
+            {
+                name: "Strapi CMS",
+                description: "Enabled flexible content delivery and admin control panels for managing services, vendors, and regional content."
+            },
+            {
+                name: "DynamoDB",
+                description: "Implemented highly available NoSQL storage for technician data, booking histories, and real-time job queues."
+            },
+            {
+                name: "Firebase",
+                description: "Used for push notifications, analytics, and real-time communication between users and technicians."
+            },
+            {
+                name: "Microsoft App Center",
+                description: "Managed app distribution, crash reporting, and performance monitoring across platforms."
+            }
+        ],
         metrics: {
             performance: 95,
-            accessibility: 98,
-            seo: 100,
+            accessibility: 97,
+            seo: 92
         },
         techDetails: [
-            "Web and Mobile Applications",
-            "Home Services Appointment booking",
-            "Status Changings from the Representative App",
-            "Payment Gateway Integration",
+            "**Customer & Technician Apps:** Built with responsive UIs and synchronized workflows to streamline service execution.",
+            "**Strapi-Powered CMS:** Allowed non-tech admins to manage services, content, and updates without backend dependencies.",
+            "**Real-Time Coordination:** Firebase and Node.js powered instant technician assignments, status updates, and customer interactions.",
+            "**Scalable NoSQL Backend:** DynamoDB ensured fast read/write operations for real-time dispatch and booking activity.",
+            "**Cross-Platform Monitoring:** Microsoft App Center enabled seamless rollout and debugging of updates to both apps."
         ],
         image: "/homvery.png",
-        link: "https://www.homvery.com/",
-        componentGallery: []
-    },
-];
+        link: "https://homvery.com",
+        linkText: "Visit Homvery"
+    }
+] satisfies Project[];

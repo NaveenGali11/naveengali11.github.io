@@ -1,54 +1,37 @@
 import type {Metadata} from "next";
-import {Inter} from "next/font/google"; // Import the Inter font
+import {Inter} from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "./analytics/google-analytics";
 import HotjarAnalytics from "@/app/analytics/hotjar-analytics";
+import MainLayout from "./components/MainLayout";
 
-// Initialize the Inter font
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-inter",
 });
 
+// SEO-Optimized Metadata
 export const metadata: Metadata = {
     title: "Naveen Gali - React and React Native Developer",
     description:
-        "Welcome to my portfolio! I am a passionate web developer creating modern, responsive, and user-friendly websites. Specializing in frontend technologies and interactive user interfaces, I build engaging web experiences that make an impact.",
+        "Portfolio of Naveen Gali, a passionate React and React Native developer creating modern, responsive, and user-friendly digital experiences. Specializing in frontend technologies and interactive UI/UX.",
     keywords: [
-        "Web Developer",
-        "Frontend Developer",
-        "React Developer",
-        "Next.js",
-        "JavaScript",
-        "TypeScript",
-        "HTML5",
-        "CSS3",
-        "Responsive Design",
-        "UI/UX",
-        "Web Accessibility",
-        "Performance Optimization",
-        "Modern Web Development",
-        "Progressive Web Apps",
-        "React Native Developer",
-        "Illinois Institute of Technology",
-        "Mutual Mobile",
-        "Inventgrid",
-        "Naveen Gali",
+        "React Developer", "React Native Developer", "Frontend Developer", "Naveen Gali", "Next.js", "TypeScript", "UI/UX", "Web Developer Portfolio"
     ],
-    authors: [{name: "Naveen Gali"}],
+    authors: [{name: "Naveen Gali", url: "https://www.linkedin.com/in/naveen-gali/"}],
     creator: "Naveen Gali",
     openGraph: {
         title: "Naveen Gali - React and React Native Developer",
         description:
-            "Passionate web developer crafting modern and engaging digital experiences. Explore my projects and web development expertise.",
-        url: "naveengali11.github.ui",
-        siteName: "Naveen Gali - Portfolio",
+            "Explore the portfolio of Naveen Gali, a developer crafting modern and engaging digital experiences with React and React Native.",
+        url: "https://naveengali11.github.io/",
+        siteName: "Naveen Gali | Portfolio",
         images: [
             {
                 url: "/og-image.jpg",
                 width: 1200,
                 height: 630,
-                alt: "Naveen Gali - React and React Native Developer Portfolio",
+                alt: "Naveen Gali - Developer Portfolio",
             },
         ],
         locale: "en_US",
@@ -56,38 +39,27 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "[Your Name] - Web Developer",
+        title: "Naveen Gali - React and React Native Developer", // Corrected Title
         description:
-            "Passionate web developer crafting modern and engaging digital experiences. Explore my projects and web development expertise.",
-        creator: "@yourusername",
+            "Passionate developer crafting modern digital experiences. Explore my projects.",
+        creator: "@NaveenGali20", // Corrected Twitter handle
         images: ["/og-image.jpg"],
     },
     robots: {
         index: true,
         follow: true,
-        googleBot: {
-            index: true,
-            follow: true,
-            "max-video-preview": -1,
-            "max-image-preview": "large",
-            "max-snippet": -1,
-        },
     },
 };
 
-export default function RootLayout({
-                                       children,
-                                   }: Readonly<{
-    children: React.ReactNode;
-}>) {
+export default function RootLayout({children}: Readonly<{ children: React.ReactNode }>) {
     return (
-        <html lang="en">
-        <body
-            className={`${inter.variable} antialiased`} // Use the Inter font variable
-        >
+        <html lang="en" className="!scroll-smooth">
+        <body className={`${inter.variable} antialiased`}>
         <HotjarAnalytics/>
         <GoogleAnalytics/>
-        {children}
+        <MainLayout>
+            {children}
+        </MainLayout>
         </body>
         </html>
     );
