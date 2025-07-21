@@ -186,11 +186,11 @@ export const projects = [
         ],
         image: "/design_system.png",
         link: "https://www.figma.com/design/xItX1Bg0sSv5Iirm0Igi2z/Design-System?m=auto&t=mQK8bZHSxTYs1emo-1",
-        linkText: "View Project in Figma", // Added linkText
+        linkText: "View Project in Figma",
         screenGallery: [
             {
                 title: "Home & Detail Screens",
-                imageUrl: "/momentum-screens.jpg",
+                imageUrl: "/momentum-screens.png",
                 description: "The core screens of the prototype application built using the Momentum design system. The Home screen features a clean, card-based layout for content discovery, while the Detail screen provides a focused view. Both screens utilize the system's navigation and button components for a consistent user flow."
             }
         ],
