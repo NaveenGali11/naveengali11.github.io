@@ -23,7 +23,17 @@ const education = [
         logo: '/bu.png',
         logoAlt: 'Bharath University Chennai Logo',
     },
-    // Add more education history here
+    {
+        id: 3,
+        school: "Founder Institute",
+        degree: "Startup Founder Program",
+        duration: "October 2025 - February 2026",
+        location: "Chicago Chapter",
+        grade: "",
+        logo: '/fi-logo.png',
+        logoAlt: 'Founder Institute Logo',
+        description: "Selected for prestigious startup accelerator program. Working Group President leading peer learning sessions.",
+    },
 ];
 
 export const EducationSection = () => {
@@ -31,29 +41,31 @@ export const EducationSection = () => {
         <section className="py-12 sm:py-20 px-4 border-t border-gray-800 text-white">
             <div className="max-w-6xl mx-auto">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 text-center">
-                    Education
+                    Education & Certifications
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                     {education.map((edu) => (
                         <div
                             key={edu.id}
-                            className="group bg-[#161B22] p-6 rounded-lg border border-gray-700 hover:border-blue-500 hover:bg-[#21262D] transition-all flex items-center" // added items-center
+                            className={`group bg-[#161B22] p-6 rounded-lg border border-gray-700 hover:border-cyan-500 hover:bg-[#21262D] transition-all ${
+                                edu.logo ? 'flex items-center' : 'flex flex-col'
+                            }`}
                         >
                             {/* Logo Image */}
                             {edu.logo && (
-                                <div className="flex-shrink-0 w-16 h-16 relative mr-5">
+                                <div className="flex-shrink-0 w-20 h-20 relative mr-5">
                                     <Image
                                         src={edu.logo}
                                         alt={edu.logoAlt}
                                         layout="fill"
-                                        objectFit="contain" // Use "contain" to prevent stretching the logo
+                                        objectFit="contain"
                                     />
                                 </div>
                             )}
 
                             {/* Education Details */}
                             <div className="flex-grow">
-                                <h3 className="text-xl font-bold mb-1 text-blue-400 group-hover:text-blue-300 transition-colors">
+                                <h3 className="text-xl font-bold mb-1 text-cyan-400 group-hover:text-cyan-300 transition-colors">
                                     {edu.school}
                                 </h3>
                                 <p className="text-lg font-semibold text-gray-200 mb-1">
@@ -65,9 +77,16 @@ export const EducationSection = () => {
                                 <p className="text-sm text-gray-400">
                                     {edu.duration}
                                 </p>
-                                <p className="text-sm text-gray-400">
-                                    {edu.grade}
-                                </p>
+                                {edu.grade && (
+                                    <p className="text-sm text-gray-400">
+                                        {edu.grade}
+                                    </p>
+                                )}
+                                {edu.description && (
+                                    <p className="text-sm text-gray-300 mt-2">
+                                        {edu.description}
+                                    </p>
+                                )}
                             </div>
                         </div>
                     ))}

@@ -61,6 +61,144 @@ export type Project = DesignProject | DevProject;
 
 export const projects = [
   {
+    slug: "polyhistor-travel-platform",
+    type: "dev",
+    title: "Polyhistor - AI-Powered Travel Planning Platform",
+    description:
+      "As Founding Engineer, architected a B2B2C travel platform that reduces user planning time by 40% using LLM-driven itinerary generation. Built offline-first sync layer ensuring 100% data integrity in zero-connectivity areas and cut battery consumption by 40% with custom native location engine.",
+    projectGoal:
+      "Build a production-grade travel planning platform that leverages AI to personalize itineraries while maintaining flawless offline functionality and optimal battery performance.",
+    techStack: [
+      "React Native (Fabric)",
+      "Node.js",
+      "PostgreSQL",
+      "AWS",
+      "Apache Kafka",
+      "LLMs",
+      "TypeScript",
+    ],
+    techStackDetails: [
+      {
+        name: "React Native (Fabric)",
+        description:
+          "Built high-performance mobile app with custom native modules for location tracking and offline sync.",
+      },
+      {
+        name: "Node.js & Apache Kafka",
+        description:
+          "Event-driven architecture handling 2,000+ concurrent users with async processing for LLM requests.",
+      },
+      {
+        name: "PostgreSQL & AWS",
+        description:
+          "Scalable relational database on AWS RDS with read replicas for high availability.",
+      },
+      {
+        name: "LLM Integration",
+        description:
+          "Integrated multiple LLM providers for personalized itinerary generation and natural language queries.",
+      },
+    ],
+    metrics: { performance: 95, accessibility: 98, seo: 100 },
+    techDetails: [
+      "**Reduced Planning Time by 40%:** LLM-driven itinerary generation creates personalized travel plans in seconds.",
+      "**100% Data Integrity Offline:** Architected offline-first sync layer with conflict resolution for zero-connectivity areas.",
+      "**40% Battery Reduction:** Custom native location engine with intelligent sampling and background optimization.",
+      "**Scaled to 2,000+ Concurrent Users:** Event-driven architecture with Apache Kafka for async processing.",
+      "**Production AI Agents:** Built multi-agent system for itinerary optimization, budget tracking, and real-time recommendations.",
+    ],
+    image: "/polyhistor-logo.png",
+    link: "https://polyhistor.ai",
+    linkText: "Visit Polyhistor",
+  },
+  {
+    slug: "multi-agent-decision-framework",
+    type: "dev",
+    title: "Multi-Agent Anonymous Decision Framework",
+    description:
+      "Research project building an ensemble AI system that aggregates responses from multiple LLMs (Claude, Gemini, Perplexity) with anonymization pipeline to eliminate model bias. Evaluates outputs for production-grade reliability in critical decision-making scenarios.",
+    projectGoal:
+      "Create a framework for unbiased, reliable AI decision-making by aggregating multiple LLM outputs through anonymization and consensus mechanisms.",
+    techStack: [
+      "Python",
+      "Claude API",
+      "Gemini API",
+      "Perplexity API",
+      "Prompt Engineering",
+      "LLM Evaluation",
+    ],
+    techStackDetails: [
+      {
+        name: "Multi-LLM Orchestration",
+        description:
+          "Aggregates responses from Claude, Gemini, and Perplexity with weighted scoring based on domain expertise.",
+      },
+      {
+        name: "Anonymization Pipeline",
+        description:
+          "Strips identifying markers from LLM outputs to eliminate brand bias in evaluation.",
+      },
+      {
+        name: "Consensus Engine",
+        description:
+          "Statistical analysis of agreement patterns across models for confidence scoring.",
+      },
+    ],
+    metrics: { performance: 90, accessibility: 95, seo: 90 },
+    techDetails: [
+      "**Ensemble AI System:** Aggregates 3+ LLM providers for comprehensive decision analysis.",
+      "**Bias Elimination:** Anonymization pipeline removes model-specific patterns and branding.",
+      "**Production-Grade Evaluation:** Automated scoring system for output reliability and consistency.",
+      "**Domain-Specific Weighting:** Dynamic model weighting based on topic expertise.",
+    ],
+    image: "/multi-agent-framework.png",
+    link: "#",
+    linkText: "In Planning - Coming Soon",
+  },
+  {
+    slug: "d-gix-geospatial-indexing",
+    type: "dev",
+    title: "D-GIX - Custom Geospatial Indexing System",
+    description:
+      "Research project designing an optimized spatial data querying system for location-based services. D-GIX enhances backend performance for mapping applications through novel indexing algorithms that reduce query latency for proximity-based searches.",
+    projectGoal:
+      "Develop a geospatial indexing system that outperforms existing solutions (Geohash, S2) for specific use cases in location-based services and proximity queries.",
+    techStack: [
+      "Spatial Algorithms",
+      "PostgreSQL",
+      "PostGIS",
+      "Python",
+      "Performance Optimization",
+    ],
+    techStackDetails: [
+      {
+        name: "Spatial Indexing Algorithms",
+        description:
+          "Novel approach to hierarchical spatial decomposition optimized for urban environments.",
+      },
+      {
+        name: "PostgreSQL & PostGIS",
+        description:
+          "Implementation using PostgreSQL extensions for geospatial operations and benchmarking.",
+      },
+      {
+        name: "Performance Analysis",
+        description:
+          "Comprehensive benchmarking against Geohash, S2, and H3 indexing systems.",
+      },
+    ],
+    metrics: { performance: 92, accessibility: 90, seo: 85 },
+    techDetails: [
+      "**Optimized Query Performance:** 30% faster proximity queries compared to Geohash in urban scenarios.",
+      "**Hierarchical Structure:** Multi-resolution indexing supporting zoom-level optimizations.",
+      "**Research Paper in Progress:** Co-authoring academic paper on novel indexing approach.",
+      "**Real-World Application:** Designed for integration with Polyhistor travel platform.",
+    ],
+    image: "/dgix-image.jpeg",
+    link: "https://thepolyhistor-my.sharepoint.com/:b:/r/personal/apps_thepolyhistor_com/Documents/Polyhistor%20Data%20Room/Polyhistor%20Research/Polyhistor_DGIX_Research_Paper.pdf?csf=1&web=1&e=IbxHkB",
+    linkText: "Read Research Paper",
+  },
+  {
     slug: "aura-fashion-app",
     type: "design",
     title: "Aura: Mobile Fashion App & Design System",
@@ -90,7 +228,7 @@ export const projects = [
     ],
     image: "/aura_ecommerce.png",
     link: "https://www.figma.com/design/WQBf7omrPKXxs4mPQy3TGn/E-Commerce?node-id=6-9&t=ezpLlzIhGDmygKin-1",
-    linkText: "View Project in Figma", // Added linkText
+    linkText: "View Project in Figma",
     screenGallery: [
       {
         title: "Home Screen",
@@ -175,186 +313,5 @@ export const projects = [
           "The change from outline to solid provides immediate, satisfying feedback that the user's action was successful.",
       },
     ],
-  },
-  {
-    slug: "momentum-design-system",
-    type: "design", // Added type
-    title: "Momentum: Mobile Design System & Prototype",
-    description:
-      "A comprehensive mobile design system built from scratch in Figma, used to create a high-fidelity, interactive application prototype. This project focuses on establishing a scalable and consistent design language for mobile applications.",
-    projectGoal:
-      "The primary goal was to develop a robust and reusable design system that accelerates the design and development process. By creating a library of well-defined components, variants, and styles, Momentum aims to ensure visual consistency and improve usability across all future mobile projects.",
-    techStack: [
-      "Figma",
-      "Component Design",
-      "Variants",
-      "Auto Layout",
-      "Prototyping",
-    ],
-    designProcess: [
-      "Foundational Style Definition (Colors, Typography, Spacing)",
-      "Atomic Component Creation (Buttons, Inputs, Icons)",
-      "Composite Component Assembly (Cards, Modals, Navbars)",
-      "Interactive Prototyping and Animation",
-      "Documentation and Style Guide Creation",
-    ],
-    metrics: {
-      reusability: 100,
-      consistency: 100,
-      usability: 95,
-    },
-    techDetails: [
-      "End-to-End UI/UX Design in Figma",
-      "Comprehensive Design System Architecture",
-      "Built and documented over 10+ core components",
-      "Advanced prototyping with smart animations and transitions",
-      "Utilized variants and component properties for scalability",
-    ],
-    image: "/design_system.png",
-    link: "https://www.figma.com/design/xItX1Bg0sSv5Iirm0Igi2z/Design-System?m=auto&t=mQK8bZHSxTYs1emo-1",
-    linkText: "View Project in Figma",
-    screenGallery: [
-      {
-        title: "Home & Detail Screens",
-        imageUrl: "/momentum-screens.png",
-        description:
-          "The core screens of the prototype application built using the Momentum design system. The Home screen features a clean, card-based layout for content discovery, while the Detail screen provides a focused view. Both screens utilize the system's navigation and button components for a consistent user flow.",
-      },
-    ],
-    componentGallery: [
-      {
-        title: "Core Components Showcase",
-        imageUrl: "/momentum-components.png",
-        description:
-          "A selection of the fundamental components that form the building blocks of the Momentum design system. This includes buttons, input fields, cards, avatars, icons, and navigation elements.",
-        designRationale:
-          "Each component was designed with versatility and reusability in mind, featuring variants and properties that allow them to adapt to different contexts while maintaining a consistent visual identity.",
-      },
-    ],
-  },
-  {
-    slug: "smart-homes-ecommerce",
-    type: "dev",
-    title: "Smart Homes: AI-Powered E-Commerce Platform",
-    description:
-      "I engineered a full-stack e-commerce platform for smart home products that solved key business challenges in user engagement and customer support. By integrating advanced AI and a robust dual-database architecture, the platform offers a uniquely intelligent and seamless shopping experience.",
-    projectGoal:
-      "To design and build an e-commerce platform that goes beyond standard functionality by incorporating AI to automate customer service and provide a more intuitive product discovery experience.",
-    techStack: [
-      "React",
-      "Node.js",
-      "MySQL",
-      "MongoDB",
-      "Elasticsearch",
-      "OpenAI",
-      "Docker",
-    ],
-    techStackDetails: [
-      {
-        name: "React.js",
-        description:
-          "Built a dynamic and responsive user interface with a component-based architecture for a seamless shopping experience.",
-      },
-      {
-        name: "Node.js / Express.js",
-        description:
-          "Developed a robust RESTful API to handle user authentication, product management, and order processing.",
-      },
-      {
-        name: "MySQL & MongoDB",
-        description:
-          "Designed a dual-database system, using MySQL for transactional data and MongoDB for flexible storage of user reviews.",
-      },
-      {
-        name: "Elasticsearch",
-        description:
-          "Implemented a powerful semantic search engine for products and reviews, providing more intuitive and relevant results.",
-      },
-      {
-        name: "OpenAI",
-        description:
-          "Leveraged GPT and embedding models to create intelligent features like automated content generation and smart product recommendations.",
-      },
-      {
-        name: "Docker",
-        description:
-          "Containerized all backend services, ensuring a consistent and portable environment for development and deployment.",
-      },
-    ],
-    metrics: { performance: 98, accessibility: 100, seo: 100 },
-    techDetails: [
-      "**AI-Powered Features:** Integrated an OpenAI-powered chatbot to resolve over 30 common support questions, reducing user response time by 80%.",
-      "**Optimized Semantic Search:** Leveraged Elasticsearch to enable semantic product search, offering more relevant and intuitive results.",
-      "**Scalable Architecture:** Designed a dual-database system, utilizing MySQL for transactional data and MongoDB for flexible review storage, and used Docker for containerized deployment.",
-      "**Full E-Commerce Workflow:** Implemented all core functionalities, including user authentication with JWT, a product catalog of over 70 items, and a streamlined order processing system.",
-      "**Data Processing Pipeline:** Created Jupyter Notebooks for data preprocessing, generating AI content, and pushing embeddings to Elasticsearch.",
-    ],
-    image: "/code.jpg",
-    link: "https://github.com/NaveenGali11/smart-homes",
-    linkText: "View on GitHub",
-  },
-  {
-    slug: "homvery-home-services",
-    type: "dev",
-    title: "Homvery: Tech-Enabled Home Services Platform",
-    description:
-      "A dual mobile and web platform designed to simplify household services. This project improved application performance by 40% and reduced release times by 30% by leveraging a scalable architecture and a streamlined CI/CD pipeline.",
-    projectGoal:
-      "To develop a robust service delivery ecosystem and streamline the development process for a multi-platform application, ensuring high performance, scalability, and ease of content management.",
-    techStack: [
-      "React.js",
-      "Node.js",
-      "Strapi CMS",
-      "DynamoDB",
-      "Firebase",
-      "Microsoft App Center",
-    ],
-    techStackDetails: [
-      {
-        name: "React.js",
-        description:
-          "Built intuitive and responsive user interfaces for customer and admin dashboards with dynamic rendering and component reuse.",
-      },
-      {
-        name: "Node.js / Express.js",
-        description:
-          "Created scalable APIs for service booking, technician dispatch, user authentication, and feedback management.",
-      },
-      {
-        name: "Strapi CMS",
-        description:
-          "Enabled flexible content delivery and admin control panels for managing services, vendors, and regional content.",
-      },
-      {
-        name: "DynamoDB",
-        description:
-          "Implemented highly available NoSQL storage for technician data, booking histories, and real-time job queues.",
-      },
-      {
-        name: "Firebase",
-        description:
-          "Used for push notifications, analytics, and real-time communication between users and technicians.",
-      },
-      {
-        name: "Microsoft App Center",
-        description:
-          "Managed app distribution, crash reporting, and performance monitoring across platforms.",
-      },
-    ],
-    metrics: {
-      performance: 95,
-      accessibility: 97,
-      seo: 92,
-    },
-    techDetails: [
-      "**Overhauled performance and reliability:** Improved web and mobile applications by 40%.",
-      "**Streamlined CI/CD Pipeline:** Implemented GitHub Actions to automate development and deployment, cutting release times by 30%.",
-      "**Centralized Content Management:** Integrated a Strapi CMS to allow non-technical administrators to easily manage content, services, and regional data.",
-      "**Critical Bug Resolution:** Diagnosed and resolved 12 critical production bugs, which directly improved user satisfaction and reduced negative app store reviews by 40%.",
-      "**Cross-Platform Monitoring:** Microsoft App Center enabled seamless rollout and debugging of updates to both apps.",
-    ],
-    image: "/homvery.png",
-    link: "https://homvery.com",
-    linkText: "Visit Homvery",
   },
 ] satisfies Project[];

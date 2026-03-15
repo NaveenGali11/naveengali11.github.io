@@ -12,35 +12,35 @@ const inter = Inter({
 
 // SEO-Optimized Metadata
 export const metadata: Metadata = {
-  title: "Naveen Gali, Solving Problems with Code and Design",
+  metadataBase: new URL("https://naveengali11.github.io"),
+  title: "Naveen Gali | Full-Stack Engineer & AI Researcher",
   description:
-    "Naveen Gali is a React and React Native developer specializing in creating high-performance, user-friendly digital experiences. Experienced in full-stack development, UI/UX design, and building scalable applications with Node.js, TypeScript, and AWS. Explore projects that deliver measurable results and solve real-world problems.",
+    "Full-Stack Engineer and AI Researcher specializing in production agentic systems, multi-agent frameworks, and geospatial indexing. Founding Engineer at Polyhistor. Expert in React, React Native, Node.js, LLMs, and AWS.",
   keywords: [
+    "Full-Stack Engineer",
+    "AI Researcher",
+    "Naveen Gali",
     "React Developer",
     "React Native Developer",
-    "Frontend Developer",
-    "Naveen Gali",
     "Next.js",
     "TypeScript",
-    "UI/UX",
-    "Web Developer Portfolio",
+    "LLM Engineer",
+    "Multi-Agent Systems",
     "Node.js Developer",
-    "Express.js",
-    "Full-Stack Developer",
-    "Docker",
-    "AWS Amplify",
-    "Elasticsearch",
-    "Figma Design System",
-    "E-commerce Development",
+    "AWS",
+    "PostgreSQL",
+    "Geospatial Systems",
+    "Founding Engineer",
+    "Polyhistor",
   ],
   authors: [
     { name: "Naveen Gali", url: "https://www.linkedin.com/in/naveen-gali/" },
   ],
   creator: "Naveen Gali",
   openGraph: {
-    title: "Naveen Gali, Solving Problems with Code and Design",
+    title: "Naveen Gali | Full-Stack Engineer & AI Researcher",
     description:
-      "Explore the portfolio of Naveen Gali, a developer crafting modern and engaging digital experiences with React and React Native. Discover projects that leverage AI, advanced search, and scalable architecture to deliver real-world business value.",
+      "Founding Engineer at Polyhistor building AI-powered travel platform. Expert in React, Node.js, LLMs, and geospatial systems. MS CS @ Illinois Tech.",
     url: "https://naveengali11.github.io/",
     siteName: "Naveen Gali | Portfolio",
     images: [
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Naveen Gali - Developer Portfolio",
+        alt: "Naveen Gali - Full-Stack Engineer & AI Researcher",
       },
     ],
     locale: "en_US",
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Naveen Gali, Solving Problems with Code and Design",
+    title: "Naveen Gali | Full-Stack Engineer & AI Researcher",
     description:
-      "Passionate developer crafting modern digital experiences. Explore my projects.",
+      "Founding Engineer building production agentic systems. Expert in React, AI/LLMs, and full-stack development.",
     creator: "@NaveenGali20",
     images: ["/og-image.jpg"],
   },

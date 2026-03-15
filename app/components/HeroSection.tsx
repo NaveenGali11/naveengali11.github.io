@@ -177,10 +177,10 @@ export const HeroSection = () => {
             duration: 1.5,
             delay: 1.5,
           }}
-          className="mt-6 text-xl sm:text-2xl text-slate-300 max-w-2xl"
+          className="mt-6 text-xl sm:text-2xl text-slate-300 max-w-3xl"
         >
-          Passionate React and React Native developer specializing in modern
-          frontend technologies and creating interactive UI/UX experiences.
+          Full-Stack Engineer & AI Researcher building production agentic systems.
+          Founding Engineer at Polyhistor. MS CS @ Illinois Tech.
         </motion.p>
 
         <motion.div
@@ -201,10 +201,10 @@ export const HeroSection = () => {
             View My Work
           </Link>
           <Link
-            href="/project/aura-fashion-app"
+            href="#contact"
             className="group relative inline-flex items-center justify-center px-8 py-3 bg-transparent border-2 border-slate-400 rounded-full text-lg font-semibold transition-colors hover:bg-slate-100 hover:text-black"
           >
-            Explore a Case Study
+            Get in Touch
           </Link>
         </motion.div>
       </div>
