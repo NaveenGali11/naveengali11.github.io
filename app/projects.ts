@@ -76,6 +76,7 @@ export const projects = [
       "Apache Kafka",
       "LLMs",
       "TypeScript",
+      "Next.js"
     ],
     techStackDetails: [
       {

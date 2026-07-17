@@ -1,46 +1,66 @@
 const internships = [
     {
         id: 1,
-        company: "Rebecca Everlene Trust Company, Chicago, IL",
-        role: "UX/UI Design Director",
-        duration: "June 2024 - Present",
-        icon: "💻",
-        type: "Volunteer",
+        company: "Polyhistor Inc",
+        location: "Washington, DC",
+        role: "Founding Engineer – Geospatial AI Platform",
+        duration: "Oct 2025 – Present",
+        icon: "🌍",
+        type: "Full-time",
         isCurrent: true,
         responsibilities: [
-            "Lead UX/UI strategy and mentor 3-5 designers on design best practices",
-            "Translate business requirements into user flows and wireframes",
-            "Manage end-to-end experience design from concept to developer handoff",
-            "Collaborate with stakeholders to define product vision and roadmap"
-        ]
+            "Architected and shipped a distributed, consumer-facing location intelligence API at scale, serving contextual search over 3.55M+ points of interest using PostgreSQL, PostGIS, pgvector, and H3-based crowd signals.",
+            "Cut warm-cache response time to 19ms — a 24x improvement over baseline and 98.7% lower infrastructure cost at 1M requests/month — by instrumenting per-layer latency and re-engineering the dynamic geospatial index.",
+            "Served as backend partner to an external company (Inhotel Inc) on a European city pilot, designing and exposing customer-facing APIs that compute walkability, greenery, and noise scores from multi-source urban data.",
+            "Shipped a React Native consumer app with LLM-driven itinerary generation, cutting user planning time by 40% and scaling to 2,000+ concurrent users on AWS (Lambda, S3, DynamoDB).",
+            "Owned the AWS deployment lifecycle end-to-end — EC2, S3, Lambda, IAM, and CI/CD via GitHub Actions — for the production Polyhistor API.",
+            "Containerized and orchestrated backend services with Docker and Kubernetes, standardizing local-to-production parity across the team.",
+        ],
+        techStack: ["PostgreSQL", "PostGIS", "pgvector", "H3", "React Native", "Next.js", "AWS", "Docker", "Kubernetes"],
     },
     {
         id: 2,
-        company: "Mutual Mobile, Chicago, IL",
-        role: "Software Engineer",
-        duration: "Dec 2022 - Sep 2023",
-        icon: "📱",
+        company: "Rebecca Everlene Trust Company",
+        location: "Chicago, IL",
+        role: "Software Development Engineer II (SDE-2)",
+        duration: "June 2025 – June 2026",
+        icon: "💻",
         type: "Full-time",
+        isCurrent: false,
         responsibilities: [
-            "Developed React Native features, boosting user engagement by 30%.",
-            "Led TypeScript integration, reducing code errors by 25%.",
-            "Optimized app performance using MobX State Tree, achieving 15% faster load times.",
-            "Collaborated cross-functionally to enhance code quality and accelerate development.",
+            "Led a cross-functional team of 12 engineers and stakeholders, translating business requirements into React Native technical specs for \"Landmarks,\" a gamified consumer app.",
+            "Instituted CI/CD pipelines and code review standards, reviewing and merging 25+ pull requests with zero critical production regressions.",
+            "Shipped the beta release ahead of schedule by building a reusable, scalable component library adopted across the client-side codebase.",
         ],
     },
     {
         id: 3,
-        company: "Inventgrid India",
-        role: "Application Developer → Web Application Developer",
-        duration: "July 2021 - Dec 2022",
-        icon: "🖥️",
-        type: "Internship → Full-time",
+        company: "Mutual Mobile",
+        location: "Hyderabad, India",
+        role: "Software Development Engineer I (SDE-1)",
+        duration: "Dec 2022 – Sept 2023",
+        icon: "📱",
+        type: "Full-time",
         isCurrent: false,
         responsibilities: [
-            "Optimized web apps (TypeScript/PHP), boosting performance by 30% and cutting load times by 15s.",
-            "Implemented MobX State Tree for state management, reducing testing bugs by 25%.",
-            "Saved ~20 hours per project through proactive code reviews and debugging sessions.",
-            "Improved project delivery timelines by 40% via active participation in agile practices.",
+            "Led a JavaScript-to-TypeScript migration on a Fortune 500 consumer mobile app, improving runtime performance by 25% and eliminating entire classes of production errors.",
+            "Reduced crash rates by 15% on legacy Android devices by profiling and optimizing list rendering and Redux state management.",
+            "Partnered daily with designers, PMs, and backend engineers to ship pixel-perfect, cross-platform features under tight deadlines.",
+        ],
+    },
+    {
+        id: 4,
+        company: "Inventgrid",
+        location: "India",
+        role: "Application Developer",
+        duration: "July 2020 – Dec 2022",
+        icon: "🖥️",
+        type: "Full-time",
+        isCurrent: false,
+        responsibilities: [
+            "Increased user retention by 50% by rebuilding core authentication and dashboard flows at the product's primary onboarding drop-off point.",
+            "Cut initial data load times by 40% by replacing blocking synchronous API calls with optimized asynchronous data-bridging patterns across the full stack.",
+            "Collaborated directly with founders/product leads in an early-stage environment, owning features from spec to deployment with minimal oversight.",
         ],
     },
 ];
@@ -52,7 +72,7 @@ export const InternshipExperiencesSection = () => {
                 <h2 className="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 text-center">
                     Professional Experience
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                     {internships.map((internship) => (
                         <div
                             key={internship.id}
@@ -74,6 +94,11 @@ export const InternshipExperiencesSection = () => {
                                         <p className="text-sm text-gray-400">
                                             {internship.duration}
                                         </p>
+                                        {internship.location && (
+                                            <p className="text-xs text-gray-500 mt-0.5">
+                                                📍 {internship.location}
+                                            </p>
+                                        )}
                                     </div>
 
                                     {/* Container for Star and Pill */}
@@ -129,6 +154,20 @@ export const InternshipExperiencesSection = () => {
                                     ))}
                                 </ul>
                             </div>
+
+                            {/* Tech Stack Pills */}
+                            {(internship as { techStack?: string[] }).techStack && (
+                                <div className="mt-4 flex flex-wrap gap-2">
+                                    {(internship as { techStack: string[] }).techStack.map((tech) => (
+                                        <span
+                                            key={tech}
+                                            className="inline-block px-2.5 py-1 text-xs font-medium rounded-md bg-cyan-950 text-cyan-300 border border-cyan-800 group-hover:border-cyan-600 transition-colors"
+                                        >
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>
