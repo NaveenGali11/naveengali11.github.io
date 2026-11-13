@@ -35,13 +35,13 @@ export const ContactSection = () => {
   return (
     <section
       id="contact"
-      className="py-12 sm:py-20 px-4 bg-[#161B22] scroll-mt-20"
+      className="py-12 sm:py-20 px-4 border-t border-rule bg-parchment scroll-mt-20"
     >
       <div className="max-w-4xl mx-auto text-center px-4 sm:px-6">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
-          Let&apos;s Connect and Build Something Great
+          Contact
         </h2>
-        <p className="text-sm sm:text-base text-gray-400 mb-6">
+        <p className="text-sm sm:text-base text-muted mb-6">
           Whether you&apos;re a recruiter with a full-time opportunity, or a client
           looking to start a new project, I&apos;d love to hear from you. Fill out
           the form below or connect with me on social media.
@@ -49,22 +49,22 @@ export const ContactSection = () => {
 
         {/* Direct Contact Info */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 max-w-3xl mx-auto">
-          <div className="bg-[#21262D] p-4 rounded-lg border border-gray-700">
-            <div className="text-cyan-400 text-2xl mb-2">📍</div>
-            <p className="text-sm text-gray-300">Location</p>
-            <p className="text-sm text-gray-400">Washington, DC</p>
+          <div className="bg-paper p-4 rounded-lg border border-rule">
+            <div className="text-forest text-2xl mb-2">📍</div>
+            <p className="text-sm text-ink">Location</p>
+            <p className="text-sm text-muted">Washington, DC</p>
           </div>
-          <div className="bg-[#21262D] p-4 rounded-lg border border-gray-700">
-            <div className="text-cyan-400 text-2xl mb-2">📱</div>
-            <p className="text-sm text-gray-300">Phone</p>
-            <a href="tel:+17737626777" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors">
+          <div className="bg-paper p-4 rounded-lg border border-rule">
+            <div className="text-forest text-2xl mb-2">📱</div>
+            <p className="text-sm text-ink">Phone</p>
+            <a href="tel:+17737626777" className="text-sm text-forest underline underline-offset-4 hover:text-forest-deep">
               +1 (773) 762-6777
             </a>
           </div>
-          <div className="bg-[#21262D] p-4 rounded-lg border border-gray-700">
-            <div className="text-cyan-400 text-2xl mb-2">📧</div>
-            <p className="text-sm text-gray-300">Email</p>
-            <a href="mailto:naveengali80@gmail.com" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors">
+          <div className="bg-paper p-4 rounded-lg border border-rule">
+            <div className="text-forest text-2xl mb-2">📧</div>
+            <p className="text-sm text-ink">Email</p>
+            <a href="mailto:naveengali80@gmail.com" className="text-sm text-forest underline underline-offset-4 hover:text-forest-deep">
               naveengali80@gmail.com
             </a>
           </div>
@@ -85,7 +85,7 @@ export const ContactSection = () => {
               id="name"
               required
               placeholder="Your Name"
-              className="w-full px-4 py-2 bg-[#21262D] border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full px-4 py-2 bg-paper border border-field rounded-lg placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-forest"
             />
           </div>
           <div>
@@ -98,7 +98,7 @@ export const ContactSection = () => {
               id="email"
               required
               placeholder="Your Email"
-              className="w-full px-4 py-2 bg-[#21262D] border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full px-4 py-2 bg-paper border border-field rounded-lg placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-forest"
             />
           </div>
           <div>
@@ -111,18 +111,18 @@ export const ContactSection = () => {
               required
               rows={4}
               placeholder="Your Message"
-              className="w-full px-4 py-2 bg-[#21262D] border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full px-4 py-2 bg-paper border border-field rounded-lg placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-forest"
             ></textarea>
           </div>
           <div className="text-center">
             <button
               type="submit"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-cyan-500 to-violet-500 rounded-lg font-medium hover:opacity-90 transition-opacity"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-forest text-white rounded-lg font-medium hover:bg-forest-deep transition-colors"
             >
               Send Message
             </button>
           </div>
-          {status && <p className="text-center text-gray-400 mt-4">{status}</p>}
+          {status && <p className="text-center text-muted mt-4">{status}</p>}
         </form>
 
         {/* Social Links */}
@@ -131,7 +131,7 @@ export const ContactSection = () => {
             href="https://github.com/NaveenGali11"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-800 rounded-lg"
+            className="text-forest hover:text-forest-deep transition-colors p-2 hover:bg-forest-pale rounded-lg"
             aria-label="GitHub Profile"
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -142,7 +142,7 @@ export const ContactSection = () => {
             href="https://www.linkedin.com/in/naveen-gali/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-800 rounded-lg"
+            className="text-forest hover:text-forest-deep transition-colors p-2 hover:bg-forest-pale rounded-lg"
             aria-label="LinkedIn Profile"
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -153,7 +153,7 @@ export const ContactSection = () => {
             href="https://x.com/NaveenGali20"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-800 rounded-lg"
+            className="text-forest hover:text-forest-deep transition-colors p-2 hover:bg-forest-pale rounded-lg"
             aria-label="Twitter Profile"
           >
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

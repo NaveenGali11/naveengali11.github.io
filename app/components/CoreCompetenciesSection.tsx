@@ -1,64 +1,34 @@
 export const CoreCompetenciesSection = () => {
     const skillCategories = [
-        {
-            title: "🤖 AI & LLM Engineering",
-            icon: "🧠",
-            skills: [
-                "Multi-Agent Systems",
-                "Prompt Engineering & Orchestration",
-                "Claude/Gemini/Perplexity APIs",
-            ],
-        },
-        {
-            title: "⚛️ Frontend & Mobile",
-            icon: "📱",
-            skills: [
-                "React Native (Fabric)",
-                "TypeScript",
-                "Next.js",
-            ],
-        },
-        {
-            title: "🔧 Backend & Cloud",
-            icon: "⚙️",
-            skills: [
-                "Node.js",
-                "PostgreSQL",
-                "AWS & Apache Kafka",
-            ],
-        },
-        {
-            title: "📍 Geospatial Systems",
-            icon: "🌍",
-            skills: [
-                "D-GIX Spatial Indexing",
-                "Location-Based Services",
-                "GPS Optimization",
-            ],
-        },
+        {title: "Languages", skills: ["TypeScript", "JavaScript", "Python", "Java"]},
+        {title: "Web and mobile", skills: ["React", "Next.js", "React Native", "HTML/CSS", "Storybook"]},
+        {title: "Backend and APIs", skills: ["Node.js", "Express", "FastAPI", "Django", "Spring Boot", "REST", "GraphQL", "WebSockets"]},
+        {title: "Data and geospatial", skills: ["SQL", "PostgreSQL", "PostGIS", "pgvector", "Redis", "DuckDB", "MongoDB", "H3", "Mapbox", "D3"]},
+        {title: "Applied AI and retrieval", skills: ["RAG", "Retrieval and reranking", "Evaluation", "LangChain", "LangGraph", "Structured outputs"]},
+        {title: "Cloud and delivery", skills: ["AWS", "Docker", "Vercel", "GitHub Actions", "CI/CD"]},
+        {title: "Testing and observability", skills: ["Jest", "Playwright", "Prometheus", "CloudWatch"]},
     ];
 
     return (
-        <section className="py-12 sm:py-20 px-4 bg-[#161B22]">
+        <section className="py-12 sm:py-20 px-4 border-t border-rule bg-parchment">
             <div className="max-w-5xl mx-auto">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-12 text-center">
-                    Core Competencies
+                    Skills
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {skillCategories.map((category) => (
                         <div
                             key={category.title}
-                            className="group bg-[#21262D] p-6 rounded-lg border border-transparent hover:border-cyan-500 transition-all duration-300"
+                            className="bg-linen p-6 rounded-lg border border-rule"
                         >
                             <div className="flex items-center gap-3 mb-4">
-                                <span className="text-3xl">{category.icon}</span>
-                                <h3 className="text-lg font-bold text-gray-200">{category.title}</h3>
+                                <h3 className="text-lg font-bold text-ink">{category.title}</h3>
                             </div>
                             <ul className="space-y-2">
                                 {category.skills.map((skill) => (
                                     <li key={skill} className="flex items-center gap-2">
-                                        <span className="text-cyan-400">▹</span>
-                                        <span className="text-gray-400 group-hover:text-gray-300 transition-colors text-sm">
+                                        <span className="text-forest">▹</span>
+                                        <span className="text-muted text-sm">
                                             {skill}
                                         </span>
                                     </li>

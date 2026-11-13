@@ -1,19 +1,23 @@
 import { ContactSection } from "./components/ContactSection";
 import { HeroSection } from "./components/HeroSection";
-import { InternshipExperiencesSection } from "./components/InternshipExperiencesSection";
+import { ExperienceSection } from "./components/ExperienceSection";
+import { ResearchSection } from "./components/ResearchSection";
 import { ProjectsSection } from "./components/ProjectsSection";
 import { EducationSection } from "./components/CollegeSection";
 import { CoreCompetenciesSection } from "@/app/components/CoreCompetenciesSection";
 
 export default function WebDeveloperPortfolio() {
     return (
-        <main className="min-h-screen bg-[#0D1117] text-white">
+        <main className="min-h-screen">
             <HeroSection />
-            <CoreCompetenciesSection />
-            <ProjectsSection />
-            <InternshipExperiencesSection />
-            <EducationSection />
-            <ContactSection />
+            <div className="editorial bg-paper text-ink">
+                <ProjectsSection />
+                <ExperienceSection />
+                <ResearchSection />
+                <CoreCompetenciesSection />
+                <EducationSection />
+                <ContactSection />
+            </div>
         </main>
     );
 }

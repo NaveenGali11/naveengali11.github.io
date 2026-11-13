@@ -38,29 +38,29 @@ export const ContactModal: React.FC<ContactModalProps> = ({isOpen, onClose}) => 
             onClick={onClose}
         >
             <div
-                className="bg-[#161B22] rounded-lg shadow-2xl w-full max-w-md p-6 sm:p-8 border border-gray-700 relative"
+                className="editorial bg-linen text-ink rounded-lg shadow-2xl w-full max-w-md p-6 sm:p-8 border border-rule relative"
                 onClick={(e) => e.stopPropagation()}
             >
                 <button onClick={onClose}
-                        className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                        className="absolute top-4 right-4 text-muted hover:text-ink transition-colors">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                               d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
-                <h2 className="text-2xl font-bold mb-4 text-center text-white">Contact Me</h2>
-                <p className="text-gray-400 mb-6 text-center text-sm">Have a project in mind or just want to say
+                <h2 className="text-2xl font-bold mb-4 text-center">Contact Me</h2>
+                <p className="text-muted mb-6 text-center text-sm">Have a project in mind or just want to say
                     hello?</p>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <input type="text" name="name" required placeholder="Your Name"
-                           className="w-full px-4 py-2 bg-[#21262D] border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                           className="w-full px-4 py-2 bg-paper border border-field rounded-lg text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-forest"/>
                     <input type="email" name="email" required placeholder="Your Email"
-                           className="w-full px-4 py-2 bg-[#21262D] border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+                           className="w-full px-4 py-2 bg-paper border border-field rounded-lg text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-forest"/>
                     <textarea name="message" required rows={4} placeholder="Your Message"
-                              className="w-full px-4 py-2 bg-[#21262D] border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                              className="w-full px-4 py-2 bg-paper border border-field rounded-lg text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-forest"></textarea>
                     <div className="text-center">
                         <button type="submit"
-                                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                                className="w-full bg-forest hover:bg-forest-deep text-white font-bold py-3 px-6 rounded-lg transition-colors">
                             Send Message
                         </button>
                     </div>

@@ -179,8 +179,11 @@ export const HeroSection = () => {
           }}
           className="mt-6 text-xl sm:text-2xl text-slate-300 max-w-3xl"
         >
-          Full-Stack Engineer & AI Researcher building production agentic systems.
-          Founding Engineer at Polyhistor. MS CS @ Illinois Tech.
+          <strong className="block font-semibold text-slate-100">Full-stack software engineer</strong>
+          <span className="mt-3 block text-base sm:text-lg">
+            I build web and mobile applications, backend services, and search and retrieval systems.
+            At Data Strategy Lab, I build and deploy prototypes that help clients search and use their internal documents.
+          </span>
         </motion.p>
 
         <motion.div
@@ -192,17 +195,25 @@ export const HeroSection = () => {
             duration: 1.5,
             delay: 1.7,
           }}
-          className="flex flex-col sm:flex-row justify-center gap-4 mt-10"
+          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap"
         >
           <Link
             href="#work"
             className="group relative inline-flex items-center justify-center px-8 py-3 bg-slate-100 text-black rounded-full text-lg font-semibold transition-transform hover:scale-105"
           >
-            View My Work
+            View selected work
           </Link>
+          <a
+            href="/naveen-gali-resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-full border-2 border-slate-400 bg-black px-8 py-3 text-lg font-semibold text-slate-100 transition-colors hover:bg-slate-100 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-100"
+          >
+            View résumé
+          </a>
           <Link
             href="#contact"
-            className="group relative inline-flex items-center justify-center px-8 py-3 bg-transparent border-2 border-slate-400 rounded-full text-lg font-semibold transition-colors hover:bg-slate-100 hover:text-black"
+            className="inline-flex items-center justify-center rounded-full border-2 border-slate-400 bg-black px-8 py-3 text-lg font-semibold text-slate-100 transition-colors hover:bg-slate-100 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-slate-100"
           >
             Get in Touch
           </Link>

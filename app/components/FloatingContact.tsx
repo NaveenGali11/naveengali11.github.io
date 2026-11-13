@@ -7,15 +7,16 @@ export const FloatingContact = ({ isVisible }: { isVisible: boolean }) => {
 
   return (
     <>
-      <div className="fixed bottom-8 right-8 z-40">
+      <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-40">
         <button
           onClick={() => setIsModalOpen(true)}
-          className={`bg-blue-500 hover:bg-blue-600 text-white rounded-full px-5 py-3 shadow-lg flex items-center gap-2 transition-all duration-300 ease-in-out ${
+          className={`bg-forest hover:bg-forest-deep text-white rounded-full px-5 py-3 shadow-lg flex items-center gap-2 transition-all duration-300 ease-in-out ${
             isVisible
               ? "opacity-100 scale-100"
               : "opacity-0 scale-90 pointer-events-none"
           }`}
-          aria-label="Contact Me"
+          tabIndex={isVisible ? 0 : -1}
+          aria-hidden={!isVisible}
         >
           <svg
             className="w-5 h-5"
